@@ -1,12 +1,9 @@
 //* Declare
 
 
-
-
 const generate = document.querySelector(".generate");
 const shown = document.querySelector(".willbeshown")
 const copyButton = document.querySelector(".copy")
-
 
 
 
@@ -17,11 +14,22 @@ copyButton.addEventListener('click', function(){
     const content = shown.textContent;
     navigator.clipboard.writeText(content);
     navigator.clipboard.readText()
-    .then((copied) => {
-        console.log(copied);
-    });
+    // .then((copied) => {
+    //     console.log(copied);
+    // });
+    const toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 10000,
+      animation: false,
+      customClass: 'animated slideInRight'
+  });
+  toast.fire({
+    title: 'Copied to clipboard!',
+    icon: 'success',
+  })
 })
-  // Alert the copied text
 
 
 
@@ -44,7 +52,8 @@ function passHazemn(){
 generate.addEventListener("click",function(e){
     e.preventDefault();
     passHazemn();
-    // console.log(output1.innerHTML);
+    
     
 });
+
 
